@@ -1,7 +1,7 @@
 from calm_temple_8514 import app
 from flask import render_template
 
-@app.route('/')
-@app.route('/<name>')
+@app.route('/index/')
+@app.route('/index/<name>')
 def index(name='World!'):
-    return render_template('hello.html', name=name)
+    return render_template('index.html', name=name)
