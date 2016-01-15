@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block title %}Hello from otherside{% endblock %}
+{% block head %}
+  {{ super() }} {# inherit the 'head' block from parent #}
+  <style type="text/css">
+    .header { color: #AFAFAF; }
+  </style>
+{% endblock %}
+{% block content %}
+<h1 class="header">Hello world!</h1>
+  {% if username %}
+    <p>You are {{ username }}</p>
+  {% else %}
+    <p>You have no username</p>
+  {% endif  %}
+{% endblock %}
