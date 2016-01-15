@@ -11,10 +11,6 @@
   {% if username %}
     <p>You are {{ username }}</p>
   {% else %}
-  <form method="POST" action="username">
-    Naem pls:
-    <input type="text" name="username">
-    <input type="submit" value="Submit">
-  </form>
+    <p>You have no username</p>
   {% endif  %}
 {% endblock %}
