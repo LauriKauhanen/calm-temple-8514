@@ -1,9 +1,10 @@
+test:
+  override:
+    - python ./runserver.py
+    - python ./flaskr-tests.py
 deployment:
   staging:
     branch: master
     heroku:
       appname: calm-temple-8514
-    test:
-      override:
-        - python ./runserver.py
-        - python ./flaskr-tests.py
+
