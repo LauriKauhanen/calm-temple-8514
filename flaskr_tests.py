@@ -4,7 +4,7 @@ import tempfile
 
 class FlaskrTestCase(unittest.TestCase):
 
-    def test():
+    def test(self):
         assert true
 
 if __name__ == '__main__':
