@@ -11,7 +11,16 @@
     <div id="footer">
       {% block footer %}
       &copy; Copyright 2016.
+       <script type="text/javascript">
+        window.doorbellOptions = {
+            appKey: 'Sry4coWEA24yw5MWDgmeWV6pFerlb6wbWLvvZG6vPM6Pp0rb35AH9qcLXRb9vRMq'
+        };
+        (function(d, t) {
+            var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://embed.doorbell.io/button/2959?t='+(new Date().getTime());(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g);
+        }(document, 'script'));
+      </script>
       {% endblock %}
+
     </div>
   </body>
 </html>
