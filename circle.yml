@@ -1,4 +1,8 @@
 deployment:
+  test:
+    override:
+      - python ./runserver.py
+      - python ./flaskr-tests.py
   staging:
     branch: master
     heroku:
