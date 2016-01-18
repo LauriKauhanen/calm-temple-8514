@@ -1,7 +1,3 @@
-test:
-  override:
-    - python ./runserver.py
-    - python ./flaskr-tests.py
 deployment:
   staging:
     branch: master
