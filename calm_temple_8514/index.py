@@ -12,7 +12,7 @@ def index(username=None):
 #Redirect to the FluidUI mock
 @app.route('/mock')
 def mock():
-    url = "https://www.fluidui.com/editor/live/preview/p_8dsgi7txTgebKJbBuOOBb2a2rsLTvEFz.1455096789274"
+    url = "https://www.fluidui.com/editor/live/preview/p_q6Nc6uq52Nsa8Ps9QuQ7p2fSSkV00bhm.1455102766253"
     return redirect(url, code=302)
 
 @app.route('/username', methods=['POST'])
