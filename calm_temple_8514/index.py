@@ -8,6 +8,12 @@ def index(username=None):
     resp = make_response(render_template('index.html'))
     resp.set_cookie('visit', str(time()))
     return resp
+    
+#Redirect to the FluidUI mock
+@app.route('/mock')
+def mock():
+    url = "https://www.fluidui.com/editor/live/preview/p_8dsgi7txTgebKJbBuOOBb2a2rsLTvEFz.1455096789274"
+    return redirect(url, code=302)
 
 @app.route('/username', methods=['POST'])
 def username():
