@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}
+  {{ super() }} {# inherit the 'head' block from parent #}
+  <style type="text/css">
+    .header { color: #AFAFAF; }
+  </style>
+{% endblock %}
+{% block content %}
+  <p>Test login: demo/demo</p>
+  <form method='post'>
+    <input type='text' name='username'><br>
+    <input type='password' name='password'><br>
+    <input type='submit' name='login'><br>
+  </form>
+{% endblock %}

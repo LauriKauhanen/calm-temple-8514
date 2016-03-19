@@ -1,14 +1,35 @@
 from calm_temple_8514 import app
-from flask import render_template, request, make_response,redirect, url_for
+from flask import render_template, request, make_response, redirect, url_for, \
+    session
 from time import time
 
 #Index
 @app.route('/')
-def index(username=None):
-    resp = make_response(render_template('index.html'))
-    resp.set_cookie('visit', str(time()))
-    return resp
-    
+def index():
+    if session.get('logged', None) == True:
+        return make_response(render_template( \
+            'index.html', username=session['username']) \
+        )
+    else:
+        return redirect(url_for('login'))
+
+# Login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        if request.form['username'] == 'demo' and \
+           request.form['password'] == 'demo':
+            session['username'] = request.form['username']
+            session['logged'] = True
+            return redirect(url_for('index'))
+    return make_response(render_template('login.html'))
+
+# Logout
+@app.route('/logout')
+def logout():
+    session.pop('logged', None)
+    return redirect(url_for('login'))
+
 #Redirect to the FluidUI mock
 @app.route('/mock')
 def mock():
@@ -23,3 +44,4 @@ def username():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
+

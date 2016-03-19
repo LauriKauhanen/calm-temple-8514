@@ -1,4 +1,5 @@
 {% extends "template.html" %}
+{% set page = 'index' %}
 {% block title %}Hello from otherside{% endblock %}
 {% block head %}
   {{ super() }} {# inherit the 'head' block from parent #}
@@ -7,12 +8,5 @@
   </style>
 {% endblock %}
 {% block content %}
- {# COMMENT START #}
-<h1 class="header">Hello world!</h1>
-  {% if username %}
-    <p>You are {{ username }}</p>
-  {% else %}
-    <p>You have no username</p>
-  {% endif  %}
- {# COMMENT END #}
+<h1 class="header">Hello {{ username }}!</h1>
 {% endblock %}
