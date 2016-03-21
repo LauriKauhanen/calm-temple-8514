@@ -7,11 +7,14 @@ from time import time
 @app.route('/')
 def index():
     if session.get('logged', None) == True:
-        return make_response(render_template( \
-            'index.html', username=session['username']) \
-        )
+        return redirect(url_for('users', username = session['username']))
     else:
         return redirect(url_for('login'))
+
+# User main page
+@app.route('/users/<username>')
+def users(username):
+    return make_response(render_template('index.html', username=username))
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
@@ -35,10 +38,6 @@ def logout():
 def mock():
     url = "https://www.fluidui.com/editor/live/preview/p_q6Nc6uq52Nsa8Ps9QuQ7p2fSSkV00bhm.1455102766253"
     return redirect(url, code=302)
-
-@app.route('/username', methods=['POST'])
-def username():
-    return NotImplementedError
 
 #404
 @app.errorhandler(404)
