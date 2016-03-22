@@ -14,7 +14,10 @@ def index():
 # User main page
 @app.route('/users/<username>')
 def users(username):
-    return make_response(render_template('index.html', username=username))
+    if check_user_login(username):
+        return make_response(render_template('index.html', username=username))
+    else:
+        return redirect(url_for('login'))
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
@@ -36,6 +39,8 @@ def logout():
 # Quiz
 @app.route('/users/<username>/quiz', methods=['GET', 'POST'])
 def quiz(username):
+    if check_user_login(username) != True:
+        return redirect(url_for('login'))
     if request.method == 'POST':
         pass
     question = """
@@ -57,4 +62,12 @@ def mock():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
+
+
+def check_user_login(username):
+    if session.get('logged', None) == True and \
+       session.get('username', None) == username:
+        return True
+    else:
+        return False
 
