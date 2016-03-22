@@ -33,6 +33,20 @@ def logout():
     session.pop('logged', None)
     return redirect(url_for('login'))
 
+# Quiz
+@app.route('/users/<username>/quiz', methods=['GET', 'POST'])
+def quiz(username):
+    if request.method == 'POST':
+        pass
+    question = """
+        Tässä on kysymys jonka olisi tarkoitus vaihtua
+        eri sivuilla. Kysymykset tulisi hakea tietokannasta.
+        """
+    answers = ['1', '2', '3', '4']
+    return make_response(render_template(
+        'quiz.html', question=question, answers=answers,
+        username=session['username']))
+
 #Redirect to the FluidUI mock
 @app.route('/mock')
 def mock():

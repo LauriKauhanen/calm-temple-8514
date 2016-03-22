@@ -1,6 +1,7 @@
 {% extends "template.html" %}
 {% set include_navbar = True %}
-{% block title %}Hello from otherside{% endblock %}
+{% set username = username %}
+{% block title %}Quiz{% endblock %}
 {% block head %}
   {{ super() }} {# inherit the 'head' block from parent #}
   <style type="text/css">
@@ -8,5 +9,11 @@
   </style>
 {% endblock %}
 {% block content %}
-<h1 class="header">Hello {{ username }}!</h1>
+<p>{{ question }}</p>
+<form method='post'>
+  {% for answer in answers %}
+  <input type='radio' name='answer'>{{ answer }}<br>
+  {% endfor %}
+  <input type='submit'>
+</form>
 {% endblock %}

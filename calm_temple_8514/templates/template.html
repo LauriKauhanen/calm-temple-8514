@@ -10,7 +10,8 @@
     {% if include_navbar == True %}
     <nav>
       <ul>
-        <li><a href='../logout'>Logout</a></li>
+        <li><a href='/logout'>Logout</a></li>
+	<li><a href='/users/{{ username }}/quiz'>Play</a></li>
       </ul>
     </nav>
     {% endif %}
