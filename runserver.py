@@ -1,4 +1,4 @@
-# coding='utf-8'
+# coding=utf-8
 
 from calm_temple_8514 import app
 from tornado.wsgi import WSGIContainer
