@@ -10,8 +10,3 @@ singledispatch==3.4.0.3
 six==1.10.0
 tornado==4.3
 Flask==0.10.1
-SQLAlchemy==1.0.12
-Flask-SQLAlchemy==2.1
-psycopg2==2.6.1
-WTForms==2.1
-Flask-WTF==0.12
