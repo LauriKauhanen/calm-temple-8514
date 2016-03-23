@@ -1,3 +1,4 @@
+# coding=utf-8
 from calm_temple_8514 import app
 from flask import render_template, request, make_response, redirect, url_for, \
     session
