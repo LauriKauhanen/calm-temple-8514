@@ -44,7 +44,7 @@ def quiz(username):
         return redirect(url_for('login'))
     if request.method == 'POST':
         pass
-    question = """
+    question = u"""
         Tässä on kysymys jonka olisi tarkoitus vaihtua
         eri sivuilla. Kysymykset tulisi hakea tietokannasta.
         """
