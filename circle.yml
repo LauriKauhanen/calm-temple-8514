@@ -1,6 +1,9 @@
 dependencies:
   pre:
     - sudo apt-get install -y libpq-dev
+test:
+  override:
+    - python _unittest.py
 deployment:
   staging:
     branch: master
