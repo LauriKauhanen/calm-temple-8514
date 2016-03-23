@@ -1,6 +1,8 @@
+dependencies:
+  pre:
+    - sudo apt-get install -y libpq-dev
 deployment:
   staging:
     branch: master
     heroku:
       appname: calm-temple-8514
-
