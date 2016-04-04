@@ -3,6 +3,7 @@ from calm_temple_8514 import app
 from flask import render_template, request, make_response, redirect, url_for, \
     session, json
 from flask.json import JSONEncoder
+from .question_wtf import QuestionForm
 
 #Index
 @app.route('/')
@@ -68,6 +69,27 @@ def quiz(username):
         question=qstn,
         answers=answrs,
         username=session['username'])
+    )
+
+# Page for displaying all the questions in db
+@app.route('/questions/')
+def questions():
+    # TODO: Implement question listing
+    pass
+
+# Add new question
+@app.route('/questions/new', methods=['GET', 'POST'])
+def new_question():
+    form = QuestionForm()
+    msg = ""
+    if form.validate_on_submit(): # Check if POST and valid
+        # TODO: Add new question to database
+        msg = "New question added to database!"
+    return render_template(
+        'new_question.html',
+        username=session['username'],
+        form=form,
+        message=msg
     )
 
 #Redirect to the FluidUI mock
