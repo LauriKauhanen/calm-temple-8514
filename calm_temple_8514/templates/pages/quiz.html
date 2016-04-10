@@ -1,0 +1,16 @@
+{% extends "layouts/template.html" %}
+{% block title %}Quiz{% endblock %}
+{% block head %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}
+{% block content %}
+<p>{{ question }}</p>
+<form method="post" class="question" id="quiz">
+  {% for answer in answers %}
+  <div class="question">
+	<input type="radio" name="answer" id="{{ answer }}" class="radio"><label for="{{ answer }}">{{ answer }}</label>
+  </div>
+  {% endfor %}
+  <input type="submit" style="position: absolute; left: -999px">
+</form>
+{% endblock %}

@@ -1,11 +1,5 @@
-{% extends "template.html" %}
+{% extends "layouts/template.html" %}
 {% block title %}Login{% endblock %}
-{% block head %}
-  {{ super() }} {# inherit the 'head' block from parent #}
-  <style type="text/css">
-    .header { color: #AFAFAF; }
-  </style>
-{% endblock %}
 {% block content %}
   <p>Test login: demo/demo</p>
   <form method='post'>
