@@ -98,11 +98,6 @@ def login():
 def logout():
     session.pop('logged', None)
     return redirect(url_for('login'))
-    
-# About
-@app.route('/about')
-def about():
-    return redirect(url_for('users'))
 
 # Quiz
 @app.route('/users/<username>/quiz', methods=['GET', 'POST'])
