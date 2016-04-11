@@ -67,7 +67,7 @@
 			{% endif %}
           </ul>
           <ul class="nav navbar-nav pull-right">
-			{% if not session.logged_in %}
+			{% if not session.logged %}
             <li><a href="{{ url_for('register') }}">Signup</a></li>
             <li><a href="{{ url_for('login') }}">Login</a></li>
 			{% else %}
