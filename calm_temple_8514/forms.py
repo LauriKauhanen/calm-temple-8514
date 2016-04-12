@@ -2,7 +2,7 @@ from wtforms import Form, TextField, PasswordField, TextAreaField, StringField
 from wtforms.validators import DataRequired, EqualTo, Length
 
 class RegistrationForm(Form):
-    name = TextField(
+    username = TextField(
         'Username', validators=[DataRequired(), Length(min=6, max=25)]
     )
     password = PasswordField(
