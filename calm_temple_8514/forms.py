@@ -1,5 +1,5 @@
 from wtforms import Form, TextField, PasswordField, TextAreaField, StringField
-from wtforms.validators import DataRequired, EqualTo, Length
+from wtforms.validators import DataRequired, EqualTo, Length, ValidationError
 from .models import User
 
 
