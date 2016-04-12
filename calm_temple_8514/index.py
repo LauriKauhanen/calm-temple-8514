@@ -9,6 +9,7 @@ from flask import render_template, request, make_response, redirect, url_for, \
     session, json
 from flask.json import JSONEncoder
 from .models import User
+import bcrypt
 import os
 
 #----------------------------------------------------------------------------#
@@ -89,9 +90,14 @@ def users(username):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        if request.form['username'] == 'demo' and \
-           request.form['password'] == 'demo':
-            session['username'] = request.form['username']
+        username = request.form['username']
+        password = request.form['password']
+        user = User.query.filter_by(username=username).first()
+        # Unicode strings must be encoded for hash to work
+        password = password.encode('utf-8')
+        hashed = user.password.encode('utf-8')
+        if bcrypt.hashpw(password, hashed) == hashed:
+            session['username'] = user.username
             session['logged'] = True
             session['isAdmin'] = False
             return redirect(url_for('index'))
