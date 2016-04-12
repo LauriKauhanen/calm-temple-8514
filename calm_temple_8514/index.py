@@ -70,7 +70,10 @@ def register():
     if request.method == 'POST' and form.validate():
         user = User(form.username.data, form.password.data)
         db_session.add(user)
-        flash('Thanks for registering')
+        db_session.commit()
+        session['username'] = user.username
+        session['logged'] = True
+        session['isAdmin'] = False
         return redirect(url_for('login'))
     return render_template('forms/register.html', form=form)
 
