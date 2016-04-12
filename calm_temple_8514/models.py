@@ -18,8 +18,8 @@ class User(Base):
     group = relationship("Group")
 
     def __init__(self, username, password=None):
-        self.username = username
-        self.password = bcrypt.hashpw(password, bcrypt.gensalt(14))
+        self.username = username.encode('utf-8')
+        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(14))
         self.group_id = 1
         self.created = datetime.utcnow()
         self.last_logged_on = datetime.utcnow()
