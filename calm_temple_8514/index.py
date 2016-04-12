@@ -143,6 +143,18 @@ def quiz(username):
     )
 
 
+# Add new questions
+@app.route('/users/<username>/quiz/new', methods=['GET', 'POST'])
+def new_question(username):
+    if not check_user_login(username):
+        return redirect(url_for('login'))
+    form = QuestionForm(request.form)
+    if request.method == 'POST' and form.validate():
+        # TODO: Add question to data base
+        pass
+    return render_template('pages/new_question.html', form=form)
+
+
 #404
 @app.errorhandler(404)
 def page_not_found(error):
