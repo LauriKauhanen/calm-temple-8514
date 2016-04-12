@@ -2,7 +2,6 @@
 <head>
 <meta charset="utf-8">
 <title>{% block title %}{% endblock %}</title>
-{% set username = username %}
 <!-- meta -->
 <meta name="description" content="">
 <meta name="author" content="">
@@ -54,6 +53,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li {% if request.endpoint == 'index' %} class="active" {% endif %}><a href="{{ url_for('index') }}">Home</a></li>
+	    {% if session.logged %}
 	    <li {% if request.endpoint == 'quiz' %} class="active" {% endif %}><a href="{{ url_for('quiz', username = username) }}">Play</a></li>
 	    {% if session.isAdmin %}
             <li class="dropdown">
@@ -64,13 +64,14 @@
               </ul>
              </li>
 	    {% endif %}
+	    {% endif %}
           </ul>
           <ul class="nav navbar-nav pull-right">
 	  {% if not session.logged %}
-            <li><a href="{{ url_for('register') }}">Signup</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li {% if request.endpoint == 'index' %} class="active" {% endif %}><a href="{{ url_for('register') }}">Signup</a></li>
+            <li {% if request.endpoint == 'index' %} class="active" {% endif %}><a href="{{ url_for('login') }}">Login</a></li>
 	  {% else %}
-	    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+	    <li {% if request.endpoint == 'index' %} class="active" {% endif %}><a href="{{ url_for('logout') }}">Logout</a></li>
 	  {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
