@@ -2,17 +2,19 @@ from wtforms import Form, TextField, PasswordField, TextAreaField, StringField
 from wtforms.validators import DataRequired, EqualTo, Length
 
 class RegistrationForm(Form):
-    username = TextField(
-        'Username', validators=[DataRequired(), Length(min=6, max=25)]
-    )
-    password = PasswordField(
-        'Password', validators=[DataRequired(), Length(min=6, max=40)]
-    )
+    username = TextField('Username', validators=[DataRequired(), Length(min=6, max=25)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=40)])
     confirm = PasswordField(
         'Repeat Password',
         [DataRequired(),
         EqualTo('password', message='Passwords must match')]
     )
+    
+    def validate_username(self, field):
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('Username already exists')
+
+
 	
 class LoginForm(Form):
     name = TextField('Username', [DataRequired()])
