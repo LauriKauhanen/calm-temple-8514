@@ -8,7 +8,7 @@ import bcrypt
 class User(Base):
     __tablename__ = 'users'
 
-    id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
+    id = Column(Integer, primary_key=True)
     username = Column(String(32), unique=True)
     password = Column(String(64))
     group_id = Column(Integer, ForeignKey('groups.id'))
@@ -48,7 +48,7 @@ def __repr__(self):
 class Group(Base):
     __tablename__ = 'groups'
 
-    id = Column(Integer, Sequence('group_id_seq'), primary_key=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String(32), unique=True)
     description = Column(Text)
 
@@ -63,7 +63,7 @@ class Group(Base):
 class Answer(Base):
     __tablename__ = 'answers'
 
-    id = Column(Integer, Sequence('answer_id_seq'), primary_key=True)
+    id = Column(Integer, primary_key=True)
     answer = Column(Text, unique=True)
 
     def __init__(self, answer=None):
@@ -76,7 +76,7 @@ class Answer(Base):
 class Question(Base):
     __tablename__ = 'questions'
 
-    id = Column(Integer, Sequence('question_id_seq'), primary_key=True)
+    id = Column(Integer, primary_key=True)
     question = Column(String(120))
     answer_id = Column(Integer, ForeignKey('answers.id'))
     correct_answer_id = Column(Integer, ForeignKey('answers.id'))
