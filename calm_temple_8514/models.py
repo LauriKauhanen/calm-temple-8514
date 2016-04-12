@@ -21,8 +21,8 @@ class User(Base):
         self.username = username.encode('utf-8')
         self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(14))
         self.group_id = 1
-        self.created = datetime.utcnow()
-        self.last_logged_on = datetime.utcnow()
+        self.created = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        self.last_logged_on = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 
 def is_authenticated(self):
