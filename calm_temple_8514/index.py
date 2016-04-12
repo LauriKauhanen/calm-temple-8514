@@ -8,6 +8,7 @@ from .forms import *
 from flask import render_template, request, make_response, redirect, url_for, \
     session, json
 from flask.json import JSONEncoder
+from .models import User
 import os
 
 #----------------------------------------------------------------------------#
