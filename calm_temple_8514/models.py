@@ -15,7 +15,7 @@ class User(Base):
     created = Column(DateTime)
     last_logged_on = Column(DateTime)
 
-    group = relationship("Group", back_populates="users")
+    group = relationship("Group")
 
     def __init__(self, username, password=None):
         self.username = username
@@ -78,13 +78,13 @@ class Question(Base):
 
     id = Column(Integer, Sequence('question_id_seq'), primary_key=True)
     question = Column(String(120))
-    answer = Column(Integer, ForeignKey('answers.id'))
-    correct_answer = Column(Integer, ForeignKey('answers.id'))
+    answer_id = Column(Integer, ForeignKey('answers.id'))
+    correct_answer_id = Column(Integer, ForeignKey('answers.id'))
     times_correct = Column(Integer)
     attempts = Column(Integer)
 
-    answer_id = relationship('Answer', back_populates="questions")
-    correct_answer_id = relationship('Answer', back_populates="questions")
+    answer = relationship('Answer', foreign_keys=[answer_id])
+    correct_answer = relationship('Answer', foreign_keys=[correct_answer_id])
 
     def __init__(self, question, answer, correct_answer=None):
         self.question = question
