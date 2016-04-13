@@ -24,25 +24,20 @@ class User(Base):
         self.created = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
         self.last_logged_on = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
+    def is_authenticated(self):
+        return True
 
-def is_authenticated(self):
-    return True
+    def is_active(self):
+        return True
 
+    def is_anonymous(self):
+        return False
 
-def is_active(self):
-    return True
+    def get_id(self):
+        return unicode(self.id)
 
-
-def is_anonymous(self):
-    return False
-
-
-def get_id(self):
-    return unicode(self.id)
-
-
-def __repr__(self):
-    return '<User %r>' % (self.username)
+    def __repr__(self):
+        return '<User %r>' % (self.username)
 
 
 class Group(Base):
@@ -94,5 +89,5 @@ class Question(Base):
         self.attempts = 0
 
 
-def __repr__(self):
-    return '<Question %r>' % (self.question)
+    def __repr__(self):
+        return '<Question %r>' % (self.question)
