@@ -90,10 +90,17 @@ input.radio:hover:not(:checked) ~ label {
 }
 
 /* toggle on */
-input.radio:checked ~ label:before {
+#right input.radio:checked ~ label:before {
 	content:'\2714';
 	text-indent: .9em;
 	color: #9CE2AE;
+	background-color: #4DCB6D;
+}
+
+#wrong input.radio:checked ~ label:before {
+	content:'\2718';
+	text-indent: .9em;
+	color: #CB4D6C;
 	background-color: #4DCB6D;
 }
 
